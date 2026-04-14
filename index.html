@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZipHub - Interactive Archive Explorer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Outfit:wght@600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    
+    <style>
+        :root {
+            --bg-deep: #050505;
+            --bg-surface: #0f0f12;
+            --bg-darker: #08080a;
+            --primary: #6366f1;
+            --text-main: #e2e8f0;
+            --text-dim: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+            --accent: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        }
+        body { margin:0; font-family: 'Inter', sans-serif; background: var(--bg-deep); color: var(--text-main); height: 100vh; overflow: hidden; }
+        
+        /* Dashboard Selection */
+        .dashboard { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle at center, #1e1e2e 0%, #050505 100%); }
+        .dashboard h1 { font-family: 'Outfit'; font-size: 3.5rem; margin-bottom: 10px; }
+        .dashboard h1 span { background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .zip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 90%; max-width: 1000px; margin-top: 40px; }
+        .zip-card { background: var(--bg-surface); border: 1px solid var(--border); padding: 30px; border-radius: 20px; text-align: center; cursor: pointer; transition: 0.3s; }
+        .zip-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(99,102,241,0.2); }
+        .zip-card i { color: var(--primary); margin-bottom: 15px; }
+        
+        /* Workspace Explorer */
+        .workspace { display: flex; flex-direction: column; height: 100vh; }
+        .top-nav { height: 60px; background: var(--bg-darker); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 1.5rem; justify-content: space-between; }
+        .brand { display:flex; align-items:center; gap: 10px; font-family: 'Outfit'; font-weight:700; font-size: 1.2rem; cursor: pointer; }
+        .brand span { background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .editor-layout { flex: 1; display: flex; overflow: hidden; }
+        .sidebar { width: 300px; background: var(--bg-darker); border-right: 1px solid var(--border); overflow-y: auto; padding: 20px; }
+        .editor { flex: 1; display: flex; flex-direction: column; background: var(--bg-deep); }
+        .tabs-bar { height: 40px; background: var(--bg-darker); border-bottom: 1px solid var(--border); display:flex; align-items:center;  }
+        .tab { padding: 0 20px; display:flex; align-items:center; gap: 8px; font-size: 0.85rem; border-right: 1px solid var(--border); }
+        .code-wrapper { flex: 1; overflow: auto; position: relative; }
+        pre { margin: 0; padding: 25px !important; background: transparent !important; }
+        code { font-family: 'JetBrains Mono', monospace !important; font-size: 14px; line-height: 1.6; }
+        .item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; transition: 0.2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .item:hover { background: rgba(255,255,255,0.05); }
+        .item.active { background: rgba(99, 102, 241, 0.15); color: var(--primary); }
+        .btn-action { background: transparent; border: 1px solid var(--border); color: var(--text-dim); padding: 8px 16px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.8rem; }
+        .btn-action:hover { color: #fff; background: rgba(255,255,255,0.05); }
+        .hidden { display: none !important; }
+        .animate-spin { animation: spin 1s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="theme-dark">
+    <!-- Selection Dashboard -->
+    <div id="dashboard" class="dashboard">
+        <h1>Zip<span>Hub</span></h1>
+        <p style="color: var(--text-dim);">Select an archive to explore its source code</p>
+        <div id="zipGrid" class="zip-grid">
+            <div style="color: var(--text-dim);">Scanning for archives...</div>
+        </div>
+    </div>
+
+    <!-- Interactive Explorer -->
+    <div id="workspace" class="workspace hidden">
+        <nav class="top-nav">
+            <div class="brand" onclick="location.reload()"><i data-lucide="archive"></i><span>Zip<span>Hub</span></span></div>
+            <div id="activeZipName" style="font-size: 0.9rem; font-weight: 500;"></div>
+            <button id="downloadZip" class="btn-action"><i data-lucide="download" size="16"></i>Download ZIP</button>
+        </nav>
+        <div class="editor-layout">
+            <aside class="sidebar">
+                <div id="fileTree"></div>
+            </aside>
+            <main class="editor">
+                <div class="tabs-bar">
+                    <div class="tab"><i data-lucide="file-code-2" size="14"></i><span id="fileName">Select a file</span></div>
+                </div>
+                <div class="code-wrapper">
+                    <pre><code id="codeOutput" class="language-javascript">// Choose a file to view code</code></pre>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            const dashboard = document.getElementById('dashboard');
+            const workspace = document.getElementById('workspace');
+            const zipGrid = document.getElementById('zipGrid');
+            const fileTree = document.getElementById('fileTree');
+            const codeOutput = document.getElementById('codeOutput');
+            const activeZipName = document.getElementById('activeZipName');
+            const downloadBtn = document.getElementById('downloadZip');
+            
+            let currentZip = null;
+            let currentZipBlob = null;
+            let selectedZip = "";
+
+            const init = async () => {
+                try {
+                    const res = await fetch('zips.json?t=' + Date.now());
+                    const data = await res.json();
+                    
+                    if (!data || (Array.isArray(data) && data.length === 0)) {
+                        zipGrid.innerHTML = '<div style="color: var(--text-dim);">No .zip files found in the project root.</div>';
+                        return;
+                    }
+
+                    const zips = Array.isArray(data) ? data : [data];
+                    zipGrid.innerHTML = '';
+                    
+                    zips.forEach(zip => {
+                        if (!zip || !zip.Name) return;
+                        const card = document.createElement('div');
+                        card.className = 'zip-card';
+                        card.innerHTML = `<i data-lucide="file-archive" size="48"></i><h3>${zip.Name}</h3>`;
+                        card.onclick = () => loadZip(zip.Name);
+                        zipGrid.appendChild(card);
+                    });
+                    lucide.createIcons();
+                } catch (e) {
+                    zipGrid.innerHTML = 'No ZIP files found in root.';
+                }
+            };
+
+            const loadZip = async (name) => {
+                selectedZip = name;
+                activeZipName.textContent = name;
+                dashboard.classList.add('hidden');
+                workspace.classList.remove('hidden');
+                
+                const res = await fetch(name);
+                currentZipBlob = await res.blob();
+                currentZip = await JSZip.loadAsync(await currentZipBlob.arrayBuffer());
+                
+                renderTree();
+            };
+
+            const renderTree = () => {
+                fileTree.innerHTML = '';
+                const files = Object.keys(currentZip.files).filter(f => !f.startsWith('__MACOSX'));
+                const tree = {};
+                
+                files.forEach(path => {
+                    const parts = path.split('/').filter(p => p !== '');
+                    let cur = tree;
+                    parts.forEach((p, i) => {
+                        if (!cur[p]) cur[p] = { name: p, path, isDir: i < parts.length - 1 || path.endsWith('/'), children: {} };
+                        cur = cur[p].children;
+                    });
+                });
+
+                const build = (obj, container, level = 0) => {
+                    Object.values(obj).sort((a,b) => (b.isDir - a.isDir)).forEach(item => {
+                        const el = document.createElement('div');
+                        el.className = 'item' + (item.isDir ? ' dir' : ' file');
+                        el.style.paddingLeft = `${level * 16 + 12}px`;
+                        el.innerHTML = `<i data-lucide="${item.isDir ? 'folder':'file'}" size="16"></i><span>${item.name}</span>`;
+                        container.appendChild(el);
+                        
+                        if (item.isDir) {
+                            const sub = document.createElement('div');
+                            sub.className = 'hidden';
+                            container.appendChild(sub);
+                            el.onclick = () => { sub.classList.toggle('hidden'); lucide.createIcons(); };
+                            build(item.children, sub, level + 1);
+                        } else {
+                            el.onclick = async () => {
+                                document.querySelectorAll('.item.file').forEach(i => i.classList.remove('active'));
+                                el.classList.add('active');
+                                const content = await currentZip.file(item.path).async('string');
+                                codeOutput.textContent = content;
+                                Prism.highlightElement(codeOutput);
+                            };
+                        }
+                    });
+                    lucide.createIcons();
+                };
+                build(tree, fileTree);
+            };
+
+            downloadBtn.onclick = () => {
+                const url = URL.createObjectURL(currentZipBlob);
+                const a = document.createElement('a');
+                a.href = url; a.download = selectedZip; a.click();
+            };
+
+            init();
+        });
+    </script>
+</body>
+</html>
