@@ -1,0 +1,291 @@
+[
+    {
+        "path":  "Ai_Chatgpt",
+        "name":  "Ai_Chatgpt",
+        "isDir":  true,
+        "children":  [
+                         {
+                             "path":  "Ai_Chatgpt/plsql_reverse_engineer",
+                             "name":  "plsql_reverse_engineer",
+                             "isDir":  true,
+                             "children":  [
+                                              {
+                                                  "path":  "Ai_Chatgpt/plsql_reverse_engineer/core",
+                                                  "name":  "core",
+                                                  "isDir":  true,
+                                                  "children":  [
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/core/__pycache__",
+                                                                       "name":  "__pycache__",
+                                                                       "isDir":  true,
+                                                                       "children":  [
+                                                                                        {
+                                                                                            "path":  "Ai_Chatgpt/plsql_reverse_engineer/core/__pycache__/classifier.cpython-313.pyc",
+                                                                                            "name":  "classifier.cpython-313.pyc",
+                                                                                            "isDir":  false
+                                                                                        },
+                                                                                        {
+                                                                                            "path":  "Ai_Chatgpt/plsql_reverse_engineer/core/__pycache__/hasher.cpython-313.pyc",
+                                                                                            "name":  "hasher.cpython-313.pyc",
+                                                                                            "isDir":  false
+                                                                                        },
+                                                                                        {
+                                                                                            "path":  "Ai_Chatgpt/plsql_reverse_engineer/core/__pycache__/parser.cpython-313.pyc",
+                                                                                            "name":  "parser.cpython-313.pyc",
+                                                                                            "isDir":  false
+                                                                                        },
+                                                                                        {
+                                                                                            "path":  "Ai_Chatgpt/plsql_reverse_engineer/core/__pycache__/prompts.cpython-313.pyc",
+                                                                                            "name":  "prompts.cpython-313.pyc",
+                                                                                            "isDir":  false
+                                                                                        },
+                                                                                        {
+                                                                                            "path":  "Ai_Chatgpt/plsql_reverse_engineer/core/__pycache__/__init__.cpython-313.pyc",
+                                                                                            "name":  "__init__.cpython-313.pyc",
+                                                                                            "isDir":  false
+                                                                                        }
+                                                                                    ]
+                                                                   },
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/core/classifier.py",
+                                                                       "name":  "classifier.py",
+                                                                       "isDir":  false
+                                                                   },
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/core/hasher.py",
+                                                                       "name":  "hasher.py",
+                                                                       "isDir":  false
+                                                                   },
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/core/parser.py",
+                                                                       "name":  "parser.py",
+                                                                       "isDir":  false
+                                                                   },
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/core/prompts.py",
+                                                                       "name":  "prompts.py",
+                                                                       "isDir":  false
+                                                                   },
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/core/__init__.py",
+                                                                       "name":  "__init__.py",
+                                                                       "isDir":  false
+                                                                   }
+                                                               ]
+                                              },
+                                              {
+                                                  "path":  "Ai_Chatgpt/plsql_reverse_engineer/data",
+                                                  "name":  "data",
+                                                  "isDir":  true,
+                                                  "children":  [
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/data/chromadb",
+                                                                       "name":  "chromadb",
+                                                                       "isDir":  true,
+                                                                       "children":  [
+                                                                                        {
+                                                                                            "path":  "Ai_Chatgpt/plsql_reverse_engineer/data/chromadb/65aace36-61be-43b0-8922-d9f9ea02c531",
+                                                                                            "name":  "65aace36-61be-43b0-8922-d9f9ea02c531",
+                                                                                            "isDir":  true,
+                                                                                            "children":  [
+                                                                                                             "System.Collections.Hashtable",
+                                                                                                             "System.Collections.Hashtable",
+                                                                                                             "System.Collections.Hashtable",
+                                                                                                             "System.Collections.Hashtable"
+                                                                                                         ]
+                                                                                        },
+                                                                                        {
+                                                                                            "path":  "Ai_Chatgpt/plsql_reverse_engineer/data/chromadb/chroma.sqlite3",
+                                                                                            "name":  "chroma.sqlite3",
+                                                                                            "isDir":  false
+                                                                                        }
+                                                                                    ]
+                                                                   }
+                                                               ]
+                                              },
+                                              {
+                                                  "path":  "Ai_Chatgpt/plsql_reverse_engineer/services",
+                                                  "name":  "services",
+                                                  "isDir":  true,
+                                                  "children":  [
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/services/__pycache__",
+                                                                       "name":  "__pycache__",
+                                                                       "isDir":  true,
+                                                                       "children":  [
+                                                                                        {
+                                                                                            "path":  "Ai_Chatgpt/plsql_reverse_engineer/services/__pycache__/chromadb_service.cpython-313.pyc",
+                                                                                            "name":  "chromadb_service.cpython-313.pyc",
+                                                                                            "isDir":  false
+                                                                                        },
+                                                                                        {
+                                                                                            "path":  "Ai_Chatgpt/plsql_reverse_engineer/services/__pycache__/feedback_service.cpython-313.pyc",
+                                                                                            "name":  "feedback_service.cpython-313.pyc",
+                                                                                            "isDir":  false
+                                                                                        },
+                                                                                        {
+                                                                                            "path":  "Ai_Chatgpt/plsql_reverse_engineer/services/__pycache__/ollama_client.cpython-313.pyc",
+                                                                                            "name":  "ollama_client.cpython-313.pyc",
+                                                                                            "isDir":  false
+                                                                                        },
+                                                                                        {
+                                                                                            "path":  "Ai_Chatgpt/plsql_reverse_engineer/services/__pycache__/__init__.cpython-313.pyc",
+                                                                                            "name":  "__init__.cpython-313.pyc",
+                                                                                            "isDir":  false
+                                                                                        }
+                                                                                    ]
+                                                                   },
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/services/chromadb_service.py",
+                                                                       "name":  "chromadb_service.py",
+                                                                       "isDir":  false
+                                                                   },
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/services/feedback_service.py",
+                                                                       "name":  "feedback_service.py",
+                                                                       "isDir":  false
+                                                                   },
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/services/ollama_client.py",
+                                                                       "name":  "ollama_client.py",
+                                                                       "isDir":  false
+                                                                   },
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/services/__init__.py",
+                                                                       "name":  "__init__.py",
+                                                                       "isDir":  false
+                                                                   }
+                                                               ]
+                                              },
+                                              {
+                                                  "path":  "Ai_Chatgpt/plsql_reverse_engineer/ui",
+                                                  "name":  "ui",
+                                                  "isDir":  true,
+                                                  "children":  [
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/ui/__pycache__",
+                                                                       "name":  "__pycache__",
+                                                                       "isDir":  true,
+                                                                       "children":  [
+                                                                                        {
+                                                                                            "path":  "Ai_Chatgpt/plsql_reverse_engineer/ui/__pycache__/admin_panel.cpython-313.pyc",
+                                                                                            "name":  "admin_panel.cpython-313.pyc",
+                                                                                            "isDir":  false
+                                                                                        },
+                                                                                        {
+                                                                                            "path":  "Ai_Chatgpt/plsql_reverse_engineer/ui/__pycache__/feedback_panel.cpython-313.pyc",
+                                                                                            "name":  "feedback_panel.cpython-313.pyc",
+                                                                                            "isDir":  false
+                                                                                        },
+                                                                                        {
+                                                                                            "path":  "Ai_Chatgpt/plsql_reverse_engineer/ui/__pycache__/result_panel.cpython-313.pyc",
+                                                                                            "name":  "result_panel.cpython-313.pyc",
+                                                                                            "isDir":  false
+                                                                                        },
+                                                                                        {
+                                                                                            "path":  "Ai_Chatgpt/plsql_reverse_engineer/ui/__pycache__/__init__.cpython-313.pyc",
+                                                                                            "name":  "__init__.cpython-313.pyc",
+                                                                                            "isDir":  false
+                                                                                        }
+                                                                                    ]
+                                                                   },
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/ui/admin_panel.py",
+                                                                       "name":  "admin_panel.py",
+                                                                       "isDir":  false
+                                                                   },
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/ui/feedback_panel.py",
+                                                                       "name":  "feedback_panel.py",
+                                                                       "isDir":  false
+                                                                   },
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/ui/result_panel.py",
+                                                                       "name":  "result_panel.py",
+                                                                       "isDir":  false
+                                                                   },
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/ui/__init__.py",
+                                                                       "name":  "__init__.py",
+                                                                       "isDir":  false
+                                                                   }
+                                                               ]
+                                              },
+                                              {
+                                                  "path":  "Ai_Chatgpt/plsql_reverse_engineer/workflows",
+                                                  "name":  "workflows",
+                                                  "isDir":  true,
+                                                  "children":  [
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/workflows/__pycache__",
+                                                                       "name":  "__pycache__",
+                                                                       "isDir":  true,
+                                                                       "children":  [
+                                                                                        {
+                                                                                            "path":  "Ai_Chatgpt/plsql_reverse_engineer/workflows/__pycache__/reverse_engineer.cpython-313.pyc",
+                                                                                            "name":  "reverse_engineer.cpython-313.pyc",
+                                                                                            "isDir":  false
+                                                                                        },
+                                                                                        {
+                                                                                            "path":  "Ai_Chatgpt/plsql_reverse_engineer/workflows/__pycache__/__init__.cpython-313.pyc",
+                                                                                            "name":  "__init__.cpython-313.pyc",
+                                                                                            "isDir":  false
+                                                                                        }
+                                                                                    ]
+                                                                   },
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/workflows/reverse_engineer.py",
+                                                                       "name":  "reverse_engineer.py",
+                                                                       "isDir":  false
+                                                                   },
+                                                                   {
+                                                                       "path":  "Ai_Chatgpt/plsql_reverse_engineer/workflows/__init__.py",
+                                                                       "name":  "__init__.py",
+                                                                       "isDir":  false
+                                                                   }
+                                                               ]
+                                              },
+                                              {
+                                                  "path":  "Ai_Chatgpt/plsql_reverse_engineer/.env",
+                                                  "name":  ".env",
+                                                  "isDir":  false
+                                              },
+                                              {
+                                                  "path":  "Ai_Chatgpt/plsql_reverse_engineer/app.py",
+                                                  "name":  "app.py",
+                                                  "isDir":  false
+                                              },
+                                              {
+                                                  "path":  "Ai_Chatgpt/plsql_reverse_engineer/requirements.txt",
+                                                  "name":  "requirements.txt",
+                                                  "isDir":  false
+                                              }
+                                          ]
+                         }
+                     ]
+    },
+    {
+        "path":  "project",
+        "name":  "project",
+        "isDir":  true,
+        "children":  [
+                         {
+                             "path":  "project/src",
+                             "name":  "src",
+                             "isDir":  true,
+                             "children":  [
+                                              {
+                                                  "path":  "project/src/app.js",
+                                                  "name":  "app.js",
+                                                  "isDir":  false
+                                              }
+                                          ]
+                         },
+                         {
+                             "path":  "project/styles.css",
+                             "name":  "styles.css",
+                             "isDir":  false
+                         }
+                     ]
+    }
+]
